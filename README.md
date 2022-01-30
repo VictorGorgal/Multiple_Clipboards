@@ -8,6 +8,6 @@ Por meio de comunicação Serial, é enviado qual botão foi precionado para um 
 
 Algoritmo altamente ampliável, com a adição de novas clipboard sendo feita com apenas uma linha de código no microcontrolador
 
-![unknown](https://user-images.githubusercontent.com/94933775/151681874-0431e758-8e2f-4473-bcf7-c4a807e20bf9.png)
+![image](https://user-images.githubusercontent.com/94933775/151689037-08af9a1b-ea22-4494-b38b-43225db0bd54.png)
 
 https://user-images.githubusercontent.com/94933775/151681882-322a9d16-30a8-4bb3-bd25-5b698a498c96.mp4
