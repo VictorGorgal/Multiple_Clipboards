@@ -1,5 +1,5 @@
 from time import sleep
-from machine import Pin, UART
+from machine import Pin
 
 
 class new_pin:
@@ -32,51 +32,39 @@ class new_pin:
             return False
 
 
-uart = UART(1, 115200)
+class ClipBoard:
+    def __init__(self):
+        self.clipboards = []
+    
+    def add(self, copy_pin, paste_pin):  # adds a new clipboard as a tuple
+        self.clipboards += [(new_pin(copy_pin, Pin.IN),
+                            new_pin(paste_pin, Pin.IN))]
+    
+    def trigger(self):
+        for clipboard_id, clipboard in enumerate(self.clipboards):  # for every clipboard
+            for button_id, button in enumerate(clipboard):  # for every button on the clipboard
+                if button.rising_trigger():  # checks if it has been triggered
+                    mode = 'c' if button_id == 0 else 'v'
+                    num = clipboard_id
+                    return mode + str(num)  # return the code for the button pressed (e.g. c0, v2, c3...)
+
+
 
 led = Pin(17, Pin.OUT)
 
-ctrl_c1 = new_pin(10, Pin.IN)
-ctrl_v1 = new_pin(11, Pin.IN)
+clipboard = ClipBoard()
 
-ctrl_c2 = new_pin(12, Pin.IN)
-ctrl_v2 = new_pin(13, Pin.IN)
+clipboard.add(10, 11)  # to add more clipboards simply add more of these lines with the copy and paste buttons respectively
+clipboard.add(12, 13)
+clipboard.add(14, 15)
 
-ctrl_c3 = new_pin(14, Pin.IN)
-ctrl_v3 = new_pin(15, Pin.IN)
-
-def blink():  # debounce + visual confirmation
+def blink():  # debouce + visual confirmation
     led.value(1)
     sleep(0.4)
     led.value(0)
 
 while True:
-    if ctrl_c1.rising_trigger():
-        print('c1')
-        uart.write('c1')
-        blink()
-    
-    if ctrl_v1.rising_trigger():
-        print('v1')
-        uart.write('v1')
-        blink()
+    if button_code := clipboard.trigger():  # calls the trigger() func and saves the button code returned from trigger()
+        print(button_code)  # sends the code through Serial to PC
         
-    if ctrl_c2.rising_trigger():
-        print('c2')
-        uart.write('c2')
-        blink()
-        
-    if ctrl_v2.rising_trigger():
-        print('v2')
-        uart.write('v2')
-        blink()
-        
-    if ctrl_c3.rising_trigger():
-        print('c3')
-        uart.write('c3')
-        blink()
-        
-    if ctrl_v3.rising_trigger():
-        print('v3')
-        uart.write('v3')
         blink()
