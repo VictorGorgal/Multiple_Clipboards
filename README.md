@@ -2,7 +2,7 @@
 
 Este projeto foi desenvolvido com a necessidade de copiar e colar diferentes itens independentes em mente.
 
-Foi ultilizado o microcontrolador Raspberry Pi Pico junto de 6 botões (3 pares independentes, cada par sendo uma clipboard), programado utilizando o MicroPython.
+Foi utilizado o microcontrolador Raspberry Pi Pico junto de 6 botões (3 pares independentes, cada par sendo uma clipboard), programado utilizando o MicroPython.
 
 Por meio de comunicação Serial, é enviado qual botão foi precionado para um programa em Python rodando de fundo no computador.
 
