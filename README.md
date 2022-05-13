@@ -1,12 +1,10 @@
 # Multiple Clipboards
 
-Este projeto foi desenvolvido com a necessidade de copiar e colar diferentes itens independentes em mente.
+This project was developed with the necessity of parallel "ctrl+c" and "ctrl+v" in mind.
 
-Foi utilizado o microcontrolador Raspberry Pi Pico junto de 6 botões (3 pares independentes, cada par sendo uma clipboard), programado utilizando o MicroPython.
-
-Por meio de comunicação Serial, é enviado qual botão foi precionado para um programa em Python rodando de fundo no computador.
-
-Algoritmo altamente ampliável, com a adição de novas clipboard sendo feita com apenas uma linha de código no microcontrolador
+It was used a Raspberry Pi Pico, running MicroPython, together with 6 buttons, 3 independent pairs, each being a different clipboard.  
+Through Serial communication, which button was pressed is sent to a Python program running in the background on the computer.  
+Highly scalable algorithm, with the addition of new clipboard being done with just one line of code on the microcontroller
 
 ![image](https://user-images.githubusercontent.com/94933775/151689037-08af9a1b-ea22-4494-b38b-43225db0bd54.png)
 
